@@ -1,34 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Projeto de Otimização Linear com Algoritmo Simplex
 
-## Getting Started
+Este é um projeto que implementa o algoritmo simplex em Python/TypeScript para resolver problemas de otimização linear. O algoritmo simplex é uma técnica amplamente utilizada para encontrar soluções ótimas para problemas de programação linear, onde o objetivo é maximizar ou minimizar uma função linear sujeita a um conjunto de restrições lineares.
 
-First, run the development server:
+Este projeto inclui a implementação do algoritmo simplex em Python e TypeScript, bem como uma interface de usuário simples para inserir problemas de programação linear e obter soluções. Ele também suporta problemas de maximização e minimização, restrições de igualdade e desigualdade, variáveis de folga e não negativas.
+
+## Funcionalidades
+- Resolução de problemas de otimização linear com o algoritmo simplex.
+- Suporte para problemas de maximização e minimização.
+- Manipulação de restrições de igualdade e desigualdade.
+- Suporte para variáveis de folga.
+- Interface de usuário simples para entrada de dados e exibição de resultados.
+
+## Autores
+
+- [@NegriHenrique](https://github.com/NegriHenrique)
+
+## Requisitos
+- NextJS
+- yarn
+## Instalação
+Clone o repositório para o seu ambiente local:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/NegriHenrique/simplex-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Navegue para a pasta do projeto:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd simplex-app
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Rode o projeto no modo desenvolvedor
 
-## Learn More
+```bash
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Estará disponível em http://localhost:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Como Inserir um Problema
+Na interface de usuário, insira a função objetivo e as restrições do problema em um formato adequado.
 
-## Deploy on Vercel
+Escolha se é um problema de maximização ou minimização.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Clique no botão "Resolver" para executar o algoritmo simplex e obter a solução.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Exemplos
+Para entender como inserir problemas e obter soluções, aqui estão alguns exemplos de problemas de otimização linear e suas soluções:
+
+Problema de Maximização
+Função Objetivo:
+
+```bash
+Maximizar Z = 2x1 + x2 - 3x3 + 5x4
+
+Restrições:
+1. x1 + 2x2 + 4x3 - x4 ≤ 6
+2. 2x1 + 3x2 - x3 + x4 ≤ 12
+3. x1 + x3 + x4 ≤ 4
+
+Variáveis de Decisão:
+x1, x2, x3, x4 ≥ 0
+
+Resultado Esperado:
+A solução ótima é Z = -68 / 3
+X1 = 0
+X2 = 0
+X3 = 0
+X4 = 0
+S1 = 8 / 3
+S2 = 4
+S3 = 14 / 3
+
+
+Problema de Minimização
+Função Objetivo: Minimizar Z = x1 - 2x2 + x3
+
+Restrições:
+1. x1 + 2x2 - 2x3 ≤ 4
+2. 2x1 - 2x3 ≤ 6
+3. 2x1 - x2 + 2x3 ≤ 2
+
+Variáveis de Decisão:
+x1, x2, x3 ≥ 0
+
+Resultado Esperado:
+A solução ótima é Z = -8
+X1 = 0
+X2 = 0
+X3 = 0
+S1 = 4
+S2 = 14
+S3 = 6
+```
+
+## Contribuições
+Contribuições para este projeto são bem-vindas. Se você encontrar problemas, bugs ou tiver melhorias para sugerir, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+## Licença
+Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.
+
+## Contato
+Para obter mais informações ou entrar em contato, você pode me encontrar no GitHub.
