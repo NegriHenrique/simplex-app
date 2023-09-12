@@ -73,38 +73,39 @@ function isOptimal(tableau: Tableau): boolean {
 function getSolution(tableau: number[][], variableCount: number, slackVariableCount: number): { [key: string]: number } {
     const m = tableau.length - 1;
     const n = tableau[0].length - 1;
-  
+
     const basicVariables: number[] = [];
     const basicValues: number[] = [];
-  
+
     for (let i = 0; i < n; i++) {
-      const column = tableau.map(row => row[i]);
-      if (column.filter(value => value === 0).length === m - 1 && column.includes(1)) {
-        const rowIndex = column.indexOf(1);
-        basicVariables.push(i);
-        basicValues.push(tableau[rowIndex][n]);
-      }
+        const column = tableau.map(row => row[i]);
+        if (column.filter(value => value === 0).length === m - 1 && column.includes(1)) {
+            const rowIndex = column.indexOf(1);
+            basicVariables.push(i);
+            basicValues.push(tableau[rowIndex][n]);
+        }
     }
-  
+
     const variables: { [key: string]: number } = {};
-  
+
     for (let i = 0; i < variableCount; i++) {
-      const variableName = `x${i + 1}`;
-      variables[variableName] = basicVariables.includes(i) ? basicValues[basicVariables.indexOf(i)] : 0;
+        const variableName = `x${i + 1}`;
+        variables[variableName] = basicVariables.includes(i) ? basicValues[basicVariables.indexOf(i)] : 0;
     }
-  
+
     const slackVariables: { [key: string]: number } = {};
-  
+
     for (let i = 0; i < slackVariableCount; i++) {
-      const slackVariableName = `x${variableCount + i + 1}`;
-      slackVariables[slackVariableName] = tableau[m - 1 - i][n];
+        const slackVariableName = `x${variableCount + i + 1}`;
+        if (tableau[m - 1 - i])
+            slackVariables[slackVariableName] = tableau[m - 1 - i][n];
     }
-  
+
     const Z = tableau[m][n];
-  
+
     return { Z, ...variables, ...slackVariables };
-  }
-   
+}
+
 export function simplexMethod(c: number[], A: number[][], b: number[], type: 'max' | 'min'): { [key: string]: number } {
     let tableau = createTableau(c, A, b, type);
 
